@@ -20,15 +20,17 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 include_directories(${CUDA_INCLUDE_DIRS})
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-include_directories( ${GLEW_INCLUDE_DIRS})
-include_directories( ${GLEWF_INCLUDE_DIRS})
+include_directories(${OpenCV_INCLUDE_DIRS} )
+include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(${GLEWF_INCLUDE_DIRS})
 include_directories(${KINECT2GRABBER})
+include_directories(${SIFT_INCLUDE_DIRS})
+link_directories(${SIFT_LIB})
 
 add_definitions(-DGLEW_MX -DGLEW_STATIC)
 
 add_executable (cuda_find cuda_find.cpp)
 
-target_link_libraries(cuda_find ${CUDA_LIBRARIES} ${OpenCV_LIBS} ${LIBFREENECT2_LIB} ${GLEW_LIB} ${GLFW_LIB} ${PCL_LIBRARIES})
+target_link_libraries(cuda_find ${CUDA_LIBRARIES} ${OpenCV_LIBS} ${LIBFREENECT2_LIB} ${GLEW_LIB} ${GLFW_LIB} ${PCL_LIBRARIES} siftgpu)
 
-#example : cmake .. -DGLEW_LIB=/home/gf/Libraries/libfreenect2/depends/glew/lib64/libGLEW.so -DGLFW_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libglfw.so.3.0 -DGLEW_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glew/include -DGLEWF_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glfw/include -DLIBFREENECT2_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libfreenect2.so -DKINECT2GRABBER=/home/gf/Projects/pcl/pcl_kinect2_grabber
+#example : cmake .. -DGLEW_LIB=/home/gf/Libraries/libfreenect2/depends/glew/lib64/libGLEW.so -DGLFW_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libglfw.so.3.0 -DGLEW_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glew/include -DGLEWF_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glfw/include -DLIBFREENECT2_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libfreenect2.so -DKINECT2GRABBER=/home/gf/Projects/pcl/pcl_kinect2_grabber -DSIFT_INCLUDE_DIRS=/home/gf/Libraries/SiftGPU/src/ -DSIFT_LIB=/home/gf/Libraries/SiftGPU/bin/
