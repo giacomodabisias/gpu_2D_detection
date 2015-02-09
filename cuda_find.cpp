@@ -72,7 +72,49 @@ private:
 };
 
 
-using namespace cv;
+class GPUORB : public GPUFeature2D
+{
+public:
+	GPUORB(int nFeatures, float scaleFactor, int nLevels, int edgeThreshold, int firstLevel, int WTA_K, int scoreType, int patchSize, int fastThreshold, bool fastNonmaxSupression ) :
+		orb_(nFeatures, scaleFactor, nLevels, edgeThreshold , firstLevel, WTA_K, scoreType, patchSize)
+	{
+		orb_.setFastParams(fastThreshold, fastNonmaxSupression);
+	}
+
+	virtual ~GPUORB() {}
+
+	void detectKeypoints(const cv::Mat & image, std::vector<cv::KeyPoint> & keypoints, const cv::Mat & mask = cv::Mat())
+    {
+    	cv::gpu::GpuMat imgGpu(image);
+    	cv::gpu::GpuMat maskGpu(mask);
+    	try
+    	{
+    		orb_(imgGpu, maskGpu, keypoints);
+    	}
+    	catch(cv::Exception &e)
+		{
+	  		std::cout << "error detecting keypoints" << std::endl;
+		}
+    }
+
+    void computeDescriptors( const cv::Mat& image, std::vector<cv::KeyPoint>& keypoints, cv::gpu::GpuMat& descriptors)
+	{
+		std::vector<float> d;
+		cv::gpu::GpuMat imgGpu(image);
+		try
+		{
+			orb_(imgGpu, cv::gpu::GpuMat(), keypoints, descriptors); // No option to use provided keypoints!?
+		}
+		catch(cv::Exception &e)
+		{
+			std::cout << "error computing descriptors" << std::endl;
+		}
+	}
+private:
+    cv::gpu::ORB_GPU orb_;
+};
+
+
 
 int main( int argc, char** argv )
 {
@@ -80,17 +122,17 @@ int main( int argc, char** argv )
 		return -1; 
 	
 
-	Mat image = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
-	Mat frame;
+	cv::Mat image = cv::imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
+	cv::Mat frame;
 
 	if( !image.data ){ 
 		std::cout<< " --(!) Error reading images " << std::endl; 
 		return -1; 
 	}
-	
+
 	GPUSurf surf(400, 4, 2, true, 0.01, false);
 
-	std::vector<KeyPoint> keypoints_image, keypoints_frame;
+	std::vector<cv::KeyPoint> keypoints_image, keypoints_frame;
 
 	surf.detectKeypoints(image, keypoints_image);
 
@@ -99,19 +141,19 @@ int main( int argc, char** argv )
 	surf.computeDescriptors(image, keypoints_image, descriptors_image);
 
 	std::vector<std::vector<cv::DMatch> > matches;
-	cv::gpu::BruteForceMatcher_GPU<L2< float>> matcher;
+	cv::gpu::BruteForceMatcher_GPU<cv::L2< float>> matcher;
 
-	std::vector< DMatch > good_matches;
+	std::vector< cv::DMatch > good_matches;
 
-	Mat img_matches;
-	namedWindow("Good Matches", WINDOW_NORMAL);
+	cv::Mat img_matches;
+	namedWindow("Good Matches", cv::WINDOW_NORMAL);
 	double dist;
 
-	std::vector<Point2f> obj;
-	std::vector<Point2f> scene;
-	Mat H;
-	std::vector<Point2f> obj_corners(4);
-	std::vector<Point2f> scene_corners(4);
+	std::vector<cv::Point2f> obj;
+	std::vector<cv::Point2f> scene;
+	cv::Mat H;
+	std::vector<cv::Point2f> obj_corners(4);
+	std::vector<cv::Point2f> scene_corners(4);
 
 	obj_corners[0] = cvPoint(0,0); 
 	obj_corners[1] = cvPoint( image.cols, 0 );
@@ -131,7 +173,7 @@ int main( int argc, char** argv )
 
 		frame = kinect_frame.data_;
 
-		cvtColor(frame, frame, CV_BGR2GRAY);
+		cv::cvtColor(frame, frame, CV_BGR2GRAY);
 
 		std::cout << "detecting surf" << std::endl;
 		surf.detectKeypoints(frame, keypoints_frame);
@@ -142,7 +184,7 @@ int main( int argc, char** argv )
 		std::cout << "matching descriptors" << std::endl;
 		matcher.knnMatch( descriptors_image, descriptors_frame, matches, 2 );
 
-		for(int k = 0; k < min(descriptors_image.rows-1,(int) matches.size()); k++)   
+		for(int k = 0; k < cv::min(descriptors_image.rows-1,(int) matches.size()); k++)   
 			{  
 			if((matches[k][0].distance < 0.6*(matches[k][1].distance)) && ((int) matches[k].size()<=2 && (int) matches[k].size()>0))  
 			{  
@@ -151,8 +193,8 @@ int main( int argc, char** argv )
 		}  
 
 		std::cout << "drawing matches" << std::endl;
-		drawMatches( image, keypoints_image, frame, keypoints_frame, good_matches, img_matches, Scalar::all(-1), Scalar::all(-1),
-				     std::vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+		cv::drawMatches( image, keypoints_image, frame, keypoints_frame, good_matches, img_matches, cv::Scalar::all(-1), cv::Scalar::all(-1),
+				     std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 
 		if (good_matches.size() >= 4){
 			for( int i = 0; i < good_matches.size(); i++ ){
@@ -160,26 +202,26 @@ int main( int argc, char** argv )
 				scene.push_back( keypoints_frame[ good_matches[i].trainIdx ].pt );
 			}
 
-			H = findHomography( obj, scene, CV_RANSAC );
+			H = cv::findHomography( obj, scene, CV_RANSAC );
 
 			if(H.rows == 3 && H.cols == 3){
-				perspectiveTransform( obj_corners, scene_corners, H);
-				line( img_matches, scene_corners[0] + Point2f( image.cols, 0), scene_corners[1] + Point2f( image.cols, 0), Scalar(0, 255, 0), 4 );
-				line( img_matches, scene_corners[1] + Point2f( image.cols, 0), scene_corners[2] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
-				line( img_matches, scene_corners[2] + Point2f( image.cols, 0), scene_corners[3] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
-				line( img_matches, scene_corners[3] + Point2f( image.cols, 0), scene_corners[0] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
+				cv::perspectiveTransform( obj_corners, scene_corners, H);
+				cv::line( img_matches, scene_corners[0] + cv::Point2f( image.cols, 0), scene_corners[1] + cv::Point2f( image.cols, 0), cv::Scalar(0, 255, 0), 4 );
+				cv::line( img_matches, scene_corners[1] + cv::Point2f( image.cols, 0), scene_corners[2] + cv::Point2f( image.cols, 0), cv::Scalar( 0, 255, 0), 4 );
+				cv::line( img_matches, scene_corners[2] + cv::Point2f( image.cols, 0), scene_corners[3] + cv::Point2f( image.cols, 0), cv::Scalar( 0, 255, 0), 4 );
+				cv::line( img_matches, scene_corners[3] + cv::Point2f( image.cols, 0), scene_corners[0] + cv::Point2f( image.cols, 0), cv::Scalar( 0, 255, 0), 4 );
 			}
 		}
 
 		//-- Show detected matches
 		std::cout << "showing image" << std::endl;
-		imshow( "Good Matches", img_matches );
+		cv::imshow( "Good Matches", img_matches );
 		matches.clear();
 		good_matches.clear();
 		obj.clear();
 		scene.clear();
 		scene_corners.resize(4);
-		char key = waitKey(30);
+		char key = cv::waitKey(30);
 		if(key == 27) 
 			break;
 
