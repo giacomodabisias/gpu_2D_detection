@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-Project (cuda_find CXX)
+Project (cuda_sift CXX)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") 
 set(CMAKE_CXX_FLAHS "${CMAKE_CXX_FLAGS} -march=native")
@@ -13,6 +13,7 @@ endif()
 
 find_package( CUDA 7 REQUIRED )
 find_package( OpenCV REQUIRED )
+find_package( Qt)
 
 find_package(PCL 1.7 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
@@ -25,12 +26,13 @@ include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${GLEWF_INCLUDE_DIRS})
 include_directories(${KINECT2GRABBER})
 include_directories(${SIFT_INCLUDE_DIRS})
+include_directories(${QT_INCLUDE_DIRS})
 link_directories(${SIFT_LIB})
 
 add_definitions(-DGLEW_MX -DGLEW_STATIC)
 
-add_executable (cuda_find cuda_find.cpp)
+add_executable (cuda_sift cuda_sift.cpp sift.cpp)
 
-target_link_libraries(cuda_find ${CUDA_LIBRARIES} ${OpenCV_LIBS} ${LIBFREENECT2_LIB} ${GLEW_LIB} ${GLFW_LIB} ${PCL_LIBRARIES} siftgpu)
+target_link_libraries(cuda_sift ${CUDA_LIBRARIES} ${OpenCV_LIBS} ${LIBFREENECT2_LIB} ${GLEW_LIB} ${GLFW_LIB} ${PCL_LIBRARIES} siftgpu)
 
 #example : cmake .. -DGLEW_LIB=/home/gf/Libraries/libfreenect2/depends/glew/lib64/libGLEW.so -DGLFW_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libglfw.so.3.0 -DGLEW_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glew/include -DGLEWF_INCLUDE_DIRS=/home/gf/Libraries/libfreenect2/depends/glfw/include -DLIBFREENECT2_LIB=/home/gf/Libraries/libfreenect2/examples/protonect/lib/libfreenect2.so -DKINECT2GRABBER=/home/gf/Projects/pcl/pcl_kinect2_grabber -DSIFT_INCLUDE_DIRS=/home/gf/Libraries/SiftGPU/src/ -DSIFT_LIB=/home/gf/Libraries/SiftGPU/bin/

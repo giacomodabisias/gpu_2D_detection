@@ -1,0 +1,158 @@
+The system is: Linux - 3.13.0-44-generic - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/local/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3358040602/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3358040602.dir/build.make CMakeFiles/cmTryCompileExec3358040602.dir/build
+make[1]: Entering directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3358040602.dir/testCXXCompiler.cxx.o
+/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec3358040602.dir/testCXXCompiler.cxx.o -c /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec3358040602
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3358040602.dir/link.txt --verbose=1
+/usr/local/bin/c++        CMakeFiles/cmTryCompileExec3358040602.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3358040602 -rdynamic 
+make[1]: Leaving directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec241459869/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec241459869.dir/build.make CMakeFiles/cmTryCompileExec241459869.dir/build
+make[1]: Entering directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o
+/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec241459869
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec241459869.dir/link.txt --verbose=1
+/usr/local/bin/c++      -v CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec241459869 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/c++
+COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/lto-wrapper
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --enable-threads=posix --disable-multilib
+Thread model: posix
+gcc version 4.9.0 (GCC) 
+COMPILER_PATH=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/
+LIBRARY_PATH=/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec241459869' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/collect2 -plugin /usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/liblto_plugin.so -plugin-opt=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjnp42I.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec241459869 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtbegin.o -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0 -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../.. CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec241459869/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec241459869.dir/build.make CMakeFiles/cmTryCompileExec241459869.dir/build]
+  ignore line: [make[1]: Entering directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec241459869]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec241459869.dir/link.txt --verbose=1]
+  ignore line: [/usr/local/bin/c++      -v CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec241459869 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/local/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/lto-wrapper]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Configured with: ../configure --enable-threads=posix --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec241459869' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/collect2 -plugin /usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/liblto_plugin.so -plugin-opt=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjnp42I.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec241459869 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtbegin.o -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0 -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../.. CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o]
+    arg [/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/local/libexec/gcc/x86_64-unknown-linux-gnu/4.9.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccjnp42I.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec241459869] ==> ignore
+    arg [/usr/lib/x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtbegin.o] ==> ignore
+    arg [-L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0] ==> dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0]
+    arg [-L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu] ==> dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu]
+    arg [-L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64] ==> dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../..] ==> dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../..]
+    arg [CMakeFiles/cmTryCompileExec241459869.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/crtend.o] ==> ignore
+    arg [/usr/lib/x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse library dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0] ==> [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0]
+  collapse library dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../x86_64-linux-gnu] ==> [/usr/local/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../../../lib64] ==> [/usr/local/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/../../..] ==> [/usr/local/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/local/lib/gcc/x86_64-unknown-linux-gnu/4.9.0;/usr/local/lib/x86_64-linux-gnu;/usr/local/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/usr/local/lib]
+  implicit fwks: []
+
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec136231792/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec136231792.dir/build.make CMakeFiles/cmTryCompileExec136231792.dir/build
+make[1]: Entering directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec136231792.dir/src.cxx.o
+/usr/local/bin/c++    -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec136231792.dir/src.cxx.o -c /home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec136231792
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec136231792.dir/link.txt --verbose=1
+/usr/local/bin/c++    -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTryCompileExec136231792.dir/src.cxx.o  -o cmTryCompileExec136231792 -rdynamic 
+make[1]: Leaving directory `/home/gf/Projects/opencv/cuda_find/surf_sender/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
