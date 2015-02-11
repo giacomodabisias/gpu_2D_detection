@@ -1,1 +1,0 @@
-/home/gf/Projects/opencv/cuda_find/surf/build/CMakeFiles/cuda_surf.dir
