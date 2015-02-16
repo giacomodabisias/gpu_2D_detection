@@ -76,8 +76,10 @@ private:
 int main( int argc, char** argv )
 {
 	clock_gettime(CLOCK_MONOTONIC, &start);
-	if( argc != 3 )
+	if( argc != 3 ){
+		std::cout << "input: ./executable image websocket_end_point" << std::endl;
 		return -1; 
+	}
 	
 	cv::Mat image_ = cv::imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
 	cv::gpu::GpuMat image(image_);
@@ -92,7 +94,7 @@ int main( int argc, char** argv )
 
 
 	if( !image.data ){ 
-		std::cout<< " --(!) Error reading images " << std::endl; 
+		std::cout<< " --(!) Error reading image " << std::endl; 
 		return -1; 
 	}
 
