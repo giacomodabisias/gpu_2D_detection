@@ -103,7 +103,6 @@ void SiftGPUWrapper::detect(const cv::Mat& image, cv::vector<cv::KeyPoint>& keyp
     gpu_mutex.lock();
     if (siftgpu->RunSIFT(image.cols, image.rows, data, GL_LUMINANCE, GL_UNSIGNED_BYTE)) {
         num_features = siftgpu->GetFeatureNum();
-        std::cout << "features num" << num_features << std::endl;
         keys = new SiftGPU::SiftKeypoint[num_features];
         descriptors.resize(128 * num_features);
         //descriptors = new float[128 * num_features];
