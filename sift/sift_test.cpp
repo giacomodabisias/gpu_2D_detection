@@ -2,6 +2,7 @@
  * @file SURF_FlannMatcher
  * @brief SURF detector + descriptor + FLANN Matcher
  * @author A. Huaman
+ https://github.com/pitzer/SiftGPU
  */
 
 #include <iostream>
