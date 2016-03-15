@@ -80,7 +80,7 @@ int main( int argc, char** argv )
 	if( argc < 4){
 		std::cout << "use: ./program image_path_file width height" << std::endl;
 		return -1; 
-	} else
+	}
 
 	cv::Mat frame;
 	std::vector<cv::Mat> images;

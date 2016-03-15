@@ -13,5 +13,5 @@ link_directories(${SIFT_LIB})
 
 add_executable (cuda_sift cuda_sift.cpp sift.cpp)
 
-target_link_libraries(cuda_sift ${OpenCV_LIBS} siftgpu)
+target_link_libraries(cuda_sift ${OpenCV_LIBS} siftgpu GLEW GL glut)
 

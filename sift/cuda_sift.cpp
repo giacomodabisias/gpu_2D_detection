@@ -35,10 +35,11 @@ int main( int argc, char** argv )
 	if( argc < 4){
 		std::cout << "use: ./program image_path_file width height" << std::endl;
 		return -1; 
-	} else
+	}
 
   	const unsigned int width = atoi(argv[2]);
   	const unsigned int height = atoi(argv[3]);
+
 	Grabber grabber(width, height);
 
 	cv::Mat image = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
@@ -72,7 +73,6 @@ int main( int argc, char** argv )
 	obj_corners[1] = cvPoint(image.cols, 0 );
 	obj_corners[2] = cvPoint(image.cols, image.rows ); 
 	obj_corners[3] = cvPoint(0, image.rows );
-
 
 	cv::Mat outImage, frame;
 

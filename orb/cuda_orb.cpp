@@ -7,16 +7,15 @@
 #include <stdio.h>
 #include <iostream>
 #include "opencv2/features2d/features2d.hpp"
-#include "opencv2/highgui/highgui_c.h"
-#include "opencv2/nonfree/features2d.hpp"
+#include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/imgproc/imgproc_c.h"
+#include "opencv2/calib3d/calib3d.hpp"
 #if FINDOBJECT_NONFREE == 0
 #include <opencv2/nonfree/gpu.hpp>
 #endif
 #include <opencv2/gpu/gpu.hpp>
-#include "Kinect2Grabber.hpp"
 #include <chrono>
+
 
 class GPUOrb 
 {
@@ -57,19 +56,41 @@ private:
     cv::gpu::ORB_GPU orb_;
 };
 
+class Grabber {
+public:
 
+	Grabber(const unsigned int width, const unsigned int height){
 
-int main( int argc, char** argv )
+		capture_ = new cv::VideoCapture(0);
+		capture_->set(CV_CAP_PROP_FRAME_WIDTH, width); 
+        capture_->set(CV_CAP_PROP_FRAME_HEIGHT, height); 
+	}
+
+	void getFrame(cv::Mat & frame){
+		cv::Mat tmp;
+       	*capture_ >> tmp;
+        cv::flip(tmp, frame, 1); 
+	}
+
+private:
+	cv::VideoCapture * capture_; 
+};
+
+int main(int argc, char ** argv)
 {
-	if( argc != 2 )
+	if( argc < 4){
+		std::cout << "use: ./program image_path_file width height" << std::endl;
 		return -1; 
-	
+	}
+	const unsigned int width = atoi(argv[2]);
+	const unsigned int height = atoi(argv[3]);
+
 
 	cv::Mat image_ = cv::imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
 	cv::gpu::GpuMat image(image_);
 	cv::Mat frame;
 
-	if( !image.data ){ 
+	if(!image.data ){ 
 		std::cout<< " --(!) Error reading images " << std::endl; 
 		return -1; 
 	}
@@ -105,16 +126,14 @@ int main( int argc, char** argv )
 	obj_corners[2] = cvPoint( image.cols, image.rows ); 
 	obj_corners[3] = cvPoint( 0, image.rows );
 
-	Kinect2Grabber::Kinect2Grabber<pcl::PointXYZRGB> k2g("../../calibration/rgb_calibration.yaml", "../../calibration/depth_calibration.yaml", "../../calibration/pose_calibration.yaml");
-	int counter = 0;
-
+	Grabber grabber(width, height);
+	cv::Mat frame_;
 	while(true){
 		using namespace std::chrono;
 
 		auto tnow = high_resolution_clock::now();
-		Kinect2Grabber::CvFrame<pcl::PointXYZRGB> kinect_frame (k2g);
+		grabber.getFrame(frame_);
 
-		cv::Mat frame_ = kinect_frame.data_;
 		cv::gpu::GpuMat frame_in(frame_);
 		cv::gpu::GpuMat frame;
 		cv::gpu::cvtColor(frame_in, frame, CV_BGR2GRAY);
